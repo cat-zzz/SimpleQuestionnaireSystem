@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace写Dao接口的全限定名-->
+<mapper namespace="cn.edu.syu.dao.QuestionDao">
+    <!--新建问题-->
+    <insert id="addQuestion" parameterType="cn.edu.syu.po.Question" keyProperty="questionID" useGeneratedKeys="true">
+        insert into question (questionnaireID,questionTitle,questionType)
+        values(#{questionnaireID},#{questionTitle},#{questionType})
+    </insert>
+    <!--根据问卷号查询所有问题-->
+    <select id="findQuestionsByQuestnaireID" parameterType="Integer"
+            resultType="cn.edu.syu.po.Question">
+        select * from question where questionnaireID=#{id}
+    </select>
+    <select id="selectQuestionListCount" parameterType="cn.edu.syu.po.Question" resultType="Integer">
+        select count(*) from question
+    </select>
+    <select id="findQuestionById" parameterType="Integer"
+            resultType="cn.edu.syu.po.Question">
+        select * from question where questionID=#{id}
+    </select>
+</mapper>

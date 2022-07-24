@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.syu.dao.AnswerDao">
+    <!--新建选项-->
+    <insert id="addAnswer" parameterType="cn.edu.syu.po.Answer" keyProperty="answerID" useGeneratedKeys="true">
+        insert into answer (answerText,poll,questionID) values (#{answerText},#{poll},#{questionID})
+    </insert>
+
+    <!--查询一个问题下的所有选项-->
+    <select id="findAnswersByQuestionId" parameterType="Integer"
+            resultType="cn.edu.syu.po.Answer">
+        select * from answer where questionID=#{id}
+    </select>
+
+    <select id="findWrittenAnswerByQuestionId"  parameterType="integer" resultType="cn.edu.syu.po.AnswerUser">
+        select * from answeruser where questionID=#{arg0} and userID=#{arg1}
+    </select>
+    <select id="findAnswerByAnswerId" resultType="cn.edu.syu.po.Answer">
+        select * from answer where answerID=#{id}
+    </select>
+    <update id="updateAnswerByAnswerId" parameterType="cn.edu.syu.po.Answer">
+        update answer set poll=#{poll} where answerID=#{answerID}
+    </update>
+</mapper>

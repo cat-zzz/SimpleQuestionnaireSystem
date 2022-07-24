@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.syu.dao.UserDao">
+    <!--根据id查询用户信息 -->
+    <select id="findUserById" parameterType="Integer"
+            resultType="cn.edu.syu.po.User">
+        select userID,userName,userPwd,userBirthday from user where userID = #{userID}
+    </select>
+    <!--查询所有用户-->
+    <select id="selectUsers" resultType="cn.edu.syu.po.User">
+        select userID,userName,userPwd,userBirthday from user
+    </select>
+
+    <!--添加用户-->
+    <insert id="addUser" parameterType="cn.edu.syu.po.User">
+        insert into user( userName,userPwd,userBirthday)
+        values(#{userName},#{userPwd},#{userBirthday})
+    </insert>
+    <!--根据用户名查询用户信息-->
+    <select id="findUserByName" parameterType="String"
+            resultType="cn.edu.syu.po.User">
+        select userID,userName,userPwd,userBirthday from user where userName = #{userName}
+    </select>
+    <update id="updateUser" parameterType="cn.edu.syu.po.User">
+        update user set userPwd=#{userPwd},userBirthday=#{userBirthday} where userName=#{userName}
+    </update>
+</mapper>

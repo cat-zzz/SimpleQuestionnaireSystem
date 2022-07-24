@@ -1,0 +1,39 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table caption {
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0.5em 0;
+}
+
+th, td {
+    border: 1px solid rgba(153, 153, 153, 0.09);
+    text-align: center;
+    padding: 10px 0;
+}
+
+table thead tr {
+    background-color: #008c8c;
+    color: #fff;
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: rgba(238, 238, 238, 0.15);
+}
+/*鼠标选中效果*/
+table tbody tr:hover {
+    background-color: rgba(157, 203, 129, 0.38);
+}
+/*表尾部*/
+table tfoot tr td {
+    text-align: right;
+    padding-right: 10px;
+}
+body{
+    background-image: url("../image/back_img.jpg");
+    background-size:100% 100%;
+    background-attachment:fixed;
+}

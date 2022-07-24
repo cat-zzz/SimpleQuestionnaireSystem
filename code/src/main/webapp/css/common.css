@@ -1,0 +1,49 @@
+body{
+    /*background-image: url("/javaFrameDesign/image/back_img.jpg");*/
+    /*background-image: url("../image/back_img.jpg");*/
+    background-size:100% 100%;
+    background-attachment:fixed;
+}
+tr td{
+    text-align: center;
+}
+input[type="submit"]{
+    background-color: #4ba0e8;
+    color: #000000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; /* future proofing */
+    text-align: center;border: 1px solid transparent;
+}
+input[type="reset"]{
+    background-color: #4ba0e8;
+    color: #000000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; /* future proofing */
+    text-align: center;border: 1px solid transparent;
+}
+input[type="text"]{
+    background-color: #4ba0e8;
+    color: #000000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; /* future proofing */
+    text-align: center;border: 1px solid transparent;
+}
+input[type="button"]{
+    background-color: #4ba0e8;
+    color: #000000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; /* future proofing */
+    text-align: center;border: 1px solid transparent;
+}
+input[type="password"]{
+    background-color: #4ba0e8;
+    color: #000000;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; /* future proofing */
+    text-align: center;border: 1px solid transparent;
+}

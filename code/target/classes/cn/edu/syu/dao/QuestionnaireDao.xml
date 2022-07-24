@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.syu.dao.QuestionnaireDao">
+    <!--添加问卷-->
+    <insert id="addQuestionnaire" parameterType="cn.edu.syu.po.Questionnaire" keyProperty="questionnaireID" useGeneratedKeys="true">
+        insert into questionnaire(userID,questionnaireTitle,questionnaireDesc,questionnaireCreateTime)
+        values(#{userID},#{questionnaireTitle},#{questionnaireDesc},#{questionnaireCreateTime})
+    </insert>
+    <!--添加用户已填写问卷-->
+    <insert id="addQuestionnaireWrite" parameterType="integer">
+        insert into questionnairewrite(userID,questionnaireID) values(#{param1},#{param2})
+    </insert>
+    <!--查找用户已创建的问卷-->
+    <select id="findQuestionnairesByUserId" resultType="cn.edu.syu.po.Questionnaire" parameterType="integer">
+        select * from questionnaire where userID=#{userId}
+    </select>
+    <!--查找用户已填写的问卷-->
+    <select id="findWrittenQuestionnairesByUserId" resultType="Integer">
+        select questionnaireID from questionnairewrite where userID=#{userId}
+    </select>
+    <!--根据问卷id查找问卷-->
+    <select id="findQuestionnaireByQuestnaireId" resultType="cn.edu.syu.po.Questionnaire">
+        select * from questionnaire where questionnaireID=#{id}
+    </select>
+    <!--模糊查询-->
+    <select id="findLikeQuestionnaires" resultType="cn.edu.syu.po.Questionnaire">
+        SELECT *
+        FROM questionnaire
+        WHERE
+            questionnaireID not in (SELECT questionnaireID
+                                    FROM questionnairewrite
+                                    WHERE userID=#{param1})
+          AND questionnaireTitle like concat('%',#{param2},'%')
+    </select>
+
+</mapper>
